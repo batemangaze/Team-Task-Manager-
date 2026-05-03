@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://team-task-manager-backend.onrender.com";
 
 const state = {
   token: localStorage.getItem("ttm_token") || "",
