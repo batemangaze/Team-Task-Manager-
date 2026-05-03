@@ -2,7 +2,7 @@ from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from fastapi import HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
-from models import CurrentUser
+from TTM.models import CurrentUser
 
 SECRET_KEY="batemancorp"
 ALGORITHM="HS256"

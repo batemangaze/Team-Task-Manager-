@@ -1,9 +1,9 @@
 from fastapi import APIRouter,FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from users import router as user_router
-from tasks import router as task_router
-from teams import router as team_router
-from database import Base,engine
+from TTM.users import router as user_router
+from TTM.tasks import router as task_router
+from TTM.teams import router as team_router
+from TTM.database import Base,engine
 
 app=FastAPI(title="Team Task Manager")
 

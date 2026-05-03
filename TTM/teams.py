@@ -1,8 +1,8 @@
 from fastapi import APIRouter,HTTPException,Depends
 from sqlalchemy.orm import Session
-from database import get_db
-from models import Team,TeamCreate,TeamResponse,UserResponse,CurrentUser,Membership,User
-from jwt_handler import get_current_user
+from TTM.database import get_db
+from TTM.models import Team,TeamCreate,TeamResponse,UserResponse,CurrentUser,Membership,User
+from TTM.jwt_handler import get_current_user
 
 
 
