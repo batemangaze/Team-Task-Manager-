@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Task Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand-mark">T</div>
+        <div>
+          <h1>Team Task Manager</h1>
+          <p>A dark command center for teams, tasks, and ownership.</p>
+        </div>
+        <div id="apiStatus" class="api-status">
+          <span></span>
+          API checking
+        </div>
+      </header>
+
+      <section id="authView" class="auth-grid">
+        <article class="panel auth-panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="authTitle">Login</h2>
+              <p id="authSubtitle">Enter your account details to continue.</p>
+            </div>
+          </div>
+
+          <form id="authForm" class="form-stack">
+            <label>
+              Name
+              <div class="input-shell">
+                <span>#</span>
+                <input id="authName" type="text" placeholder="Enter your name" autocomplete="username" required />
+              </div>
+            </label>
+
+            <label>
+              Password
+              <div class="input-shell">
+                <span>*</span>
+                <input id="authPassword" type="password" placeholder="Enter password" autocomplete="current-password" required />
+              </div>
+            </label>
+
+            <button id="authSubmit" type="submit" class="primary-btn">Login</button>
+          </form>
+
+          <button id="switchAuth" class="ghost-btn" type="button">New user? Create account</button>
+          <p id="authMessage" class="message"></p>
+        </article>
+
+        <article class="panel preview-panel">
+          <div class="empty-state">
+            <h2>Backend first. Frontend now.</h2>
+            <p>Login, create or join a team, assign tasks, and track your own work from one screen.</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="teamChoiceView" class="choice-grid hidden">
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Create team</h2>
+              <p>Start a new workspace. You become the owner automatically.</p>
+            </div>
+          </div>
+          <form id="createTeamForm" class="form-stack">
+            <label>
+              Team name
+              <div class="input-shell">
+                <span>+</span>
+                <input id="teamName" type="text" placeholder="Example: Backend Squad" required />
+              </div>
+            </label>
+            <button class="primary-btn" type="submit">Create Team</button>
+          </form>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Join team</h2>
+              <p>Enter a team ID shared by another user.</p>
+            </div>
+          </div>
+          <form id="joinTeamForm" class="form-stack">
+            <label>
+              Team ID
+              <div class="input-shell">
+                <span>#</span>
+                <input id="joinTeamId" type="number" min="1" placeholder="Enter team id" required />
+              </div>
+            </label>
+            <button class="primary-btn" type="submit">Join Team</button>
+          </form>
+        </article>
+      </section>
+
+      <section id="dashboardView" class="dashboard-grid hidden">
+        <aside class="panel side-panel">
+          <div class="profile-block">
+            <div class="avatar" id="userInitial">U</div>
+            <div>
+              <h2 id="userName">User</h2>
+              <p id="userId">ID --</p>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div>
+              <strong id="teamIdStat">--</strong>
+              <span>Team ID</span>
+            </div>
+            <div>
+              <strong id="taskCountStat">0</strong>
+              <span>My tasks</span>
+            </div>
+            <div>
+              <strong id="memberCountStat">0</strong>
+              <span>Members</span>
+            </div>
+          </div>
+
+          <div class="mini-section">
+            <h3>Team</h3>
+            <p id="teamNameLabel">No team selected</p>
+            <select id="teamSelect" class="side-select"></select>
+            <button id="switchTeamBtn" class="ghost-btn" type="button">Switch Team</button>
+          </div>
+
+          <div class="mini-section">
+            <h3>Join another team</h3>
+            <form id="sidebarJoinTeamForm" class="side-form">
+              <div class="input-shell compact-input">
+                <span>#</span>
+                <input id="sidebarJoinTeamId" type="number" min="1" placeholder="Team id" required />
+              </div>
+              <button class="ghost-btn" type="submit">Join</button>
+            </form>
+            <button id="leaveTeamBtn" class="danger-btn inline-danger" type="button">Leave Current Team</button>
+          </div>
+
+          <div class="mini-section">
+            <h3>Members</h3>
+            <div id="memberList" class="member-list"></div>
+          </div>
+
+          <button id="logoutBtn" class="danger-btn" type="button">Logout</button>
+        </aside>
+
+        <section class="panel task-panel">
+          <div class="panel-head task-head">
+            <div>
+              <h2>Tasks</h2>
+              <p>Assigned work from your FastAPI backend.</p>
+            </div>
+            <button id="refreshBtn" class="ghost-btn compact" type="button">Refresh</button>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <div class="input-shell">
+              <span>+</span>
+              <input id="taskTitle" type="text" placeholder="Task title" required />
+            </div>
+            <div class="input-shell wide">
+              <span>=</span>
+              <input id="taskDescription" type="text" placeholder="Description" required />
+            </div>
+            <select id="assignTo" required></select>
+            <button class="primary-btn compact" type="submit">Add</button>
+          </form>
+
+          <div id="taskList" class="task-list"></div>
+        </section>
+      </section>
+
+      <div id="toast" class="toast hidden"></div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
