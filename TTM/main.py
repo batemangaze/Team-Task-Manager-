@@ -7,9 +7,7 @@ from TTM.database import Base,engine
 
 app=FastAPI(title="Team Task Manager")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
+origins=[
         "https://team-task-manager-backend-4gl2.onrender.com"
         "https://team-task-manager-one-pi.vercel.app/"
         "https://team-task-manager-git-main-batemangazes-projects.vercel.app/"
@@ -18,7 +16,11 @@ app.add_middleware(
         "http://localhost:5500",
         "http://127.0.0.1:3000",
         "http://localhost:3000",
-    ],
+    ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
