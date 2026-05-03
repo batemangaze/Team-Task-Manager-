@@ -51,6 +51,11 @@ Team Task Manager API/
 +-- .gitignore
 +-- README.md
 ```
+## 🌐 Live Demo
+
+Frontend: https://team-task-manager-one-pi.vercel.app  
+Backend: https://team-task-manager-backend-4gl2.onrender.com
+
 
 ## How To Run
 
