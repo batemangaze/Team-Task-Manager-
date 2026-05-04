@@ -31,3 +31,9 @@ app.include_router(user_router)
 app.include_router(task_router)
 app.include_router(team_router)
 
+@app.get("/")
+def read_root():
+    return {
+        "message":"Team Task Manager API is running",
+        "docs":"/docs"
+    }
